@@ -1,11 +1,34 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { getPokemon } from '../actions';
 
-const App = () => {
+import './App.css';
+import CardList from './CardList';
+
+const App = props => {
+  useEffect(() => {
+    if (props.pokemon.length === 0) {
+      props.getPokemon();
+    }
+  }, [props.pokemon]);
+
   return (
-    <div>
-      <h1>App</h1>
+    <div className='app'>
+      <h1>Pokemon</h1>
+      <CardList list={props.pokemon} />
     </div>
   );
 };
 
-export default App;
+const mapStatesToProp = state => {
+  return {
+    pokemon: state.pokemon,
+    isLoading: state.isLoading,
+    error: state.error,
+  };
+};
+
+export default connect(
+  mapStatesToProp,
+  { getPokemon },
+)(App);

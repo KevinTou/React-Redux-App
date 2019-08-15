@@ -1,0 +1,20 @@
+.app h1 {
+  text-align: center;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.pokemon-name,
+.pokemon-id,
+.pokemon-stat {
+  font-weight: 600;
+}
+
+.pokemon-card {
+  width: 300px;
+  margin-top: 0.5rem;
+}
